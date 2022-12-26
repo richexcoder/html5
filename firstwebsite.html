@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="shortcut icon" href="images/icons/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- style css -->
+   <link rel="stylesheet" href="style.css">
+   <script src="https://kit.fontawesome.com/983e5ff7db.js" crossorigin="anonymous"></script>
+   <script src="app.js"></script>
+  </head>
+  <body>
+
+
+
+<header id="home">
+      <!-- navbar -->
+<nav class="navbar">
+  <div class="nav-center">
+    <!-- nav header -->
+    <div class="nav-header">
+      <img src="./images/CC foods/chicken-cusine logo.JPG" class="nav-logo" width="200" height="200" />
+      <button type="button" class="nav-toggle" id="nav-toggle" >
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- end of nav header -->
+    <!-- nav links -->
+    <ul class="nav-links"  id="nav-links">
+      <li>
+        <!-- single link -->
+        <a href="firstwebsite.html" class="scroll-link nav-link">
+          home
+        </a>
+      </li>
+      <!-- end of single link -->
+      <!-- single link -->
+      <li>
+
+        <a href="about-us.html" class=" scroll-link nav-link">
+          about
+        </a>
+      </li>
+      <!-- end of single link -->
+      <!-- single link -->
+      <li>
+
+        <a href="contact.html" class="nav-link scroll-link">
+          contact
+        </a>
+ </nav>
+ <script>
+ const date = (document.getElementById("date").innerHTML =
+  new Date().getFullYear());
+
+// ********** nav toggle ************
+// select button and links
+const navBtn = document.getElementById("nav-toggle");
+const links = document.getElementById("nav-links");
+// add event listener
+navBtn.addEventListener("click", () => {
+  links.classList.toggle("show-links");
+});
+
+// ********** smooth scroll ************
+// select links
+const scrollLinks = document.querySelectorAll(".scroll-link");
+scrollLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    // prevent default
+    e.preventDefault();
+    links.classList.remove("show-links");
+
+    const id = e.target.getAttribute("href").slice(1);
+    const element = document.getElementById(id);
+    //
+    console.log(element);
+
+    let position = element.offsetTop - 62;
+    console.log(position);
+
+    window.scrollTo({
+      left: 0,
+      // top: element.offsetTop,
+      top: position,
+      behavior: "smooth",
+    });
+  });
+});
+</script>
+
+    <br>
+
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 4</div>
+    <img src="./images/CC foods/cake.JPG" width="1100" height="600">
+    <div class="text">Caption One</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 4</div>
+    <img src="./images/CC foods/bowl food.JPG" width="1100" height="500">
+    <div class="text">Caption Two</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 4</div>
+    <img src="./images/CC foods/cake food.JPG" width="1100" height="500">
+    <div class="text">Caption Three</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 4</div>
+    <img src="./images/CC foods/long foodtray.JPG" width="1100" height="500">
+    <div class="text">Caption Three</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+
+
+<body>
+
+ <script>
+ let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+<script>
+ let slideIndex = [1,1];
+/* Class the members of each slideshow group with different CSS classes */
+let slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  let i;
+  let x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+function autoSlideShow(){
+	setInterval("mySlidesFade(1)", 2000);
+}
+</script>
+
+
+<div class="order">
+  <a href="https://wa.me/2348147155706" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  <Font color="#000000">Order via whatsapp</Font>
+      </a>
+</div>
+
+
+         <br>
+           <p class="service">Our Services</p>
+           <div class="subject">
+          <ul>
+              <li>Online food vendor</li>
+              <li>Food subscription</li>
+              <li>Lunch packs</li> 
+              <li>Fruity juice blends</li> 
+              <li>Bulk food packs</li>
+              <li>Food or soup bowls</li>
+              <li>Food tray</li>
+          </ul>
+          <p>For booking or consultation, contact: + 234 814 715 5706</p>
+            <ul>
+               <li>We do home and office delivery & Event service</li>
+               <li>We provide logistics support</li>
+               <br>
+<i class="fa-solid fa-location-dot"></i> our location: Ilorin, Kwara state,
+Nigeria.
+               </div>
+          </ul>  
+        </div>
+        <br>
+        <br>
+
+<div class="gift-wrapper">
+  <p class="gift">Gifts and Catering services</p>
+  <img src="./images/CC foods/cc setup.JPG" width="1290px" height="500px">
+  <div class="gifts">
+      <ul>
+  <li>We offer gift and suprises</li>
+  <li>Picnic settings</li>
+  <li>Indoor and Outdoor catering</li>
+  <li>Food Tray</li>
+  <li>Gifts and suprises</li>
+</ul>
+  </div>
+
+
+</div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <br>
+        <br>
+        <br>
+
+
+<div class="footer">
+<div class="info">
+   <h2>Store Info</h2>
+  
+  <i class="fa-solid fa-location-dot"></i> Tanke Oke Odo ilorin, Kwara state,Nigeria
+<br>
+  <i class="fa-solid fa-phone"></i> 0814 715 5706
+  <br>
+  <i class="fa-solid fa-fax"></i> 0901 577 9162
+  <br>
+  <i class="fa-solid fa-envelope"></i> <a href="mailto:AkinolaMorenikeji124@gmail.com">AkinolaMorenikeji124@gmail.com</a> 
+</div>
+
+ 
+
+  
+       <div class="social-media-icon">
+       <a href="https://web.facebook.com/akinola.morenikeji.96" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+       </a> 
+     
+      <a href="https://twitter.com/chicken_cuisine" target="_blank">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+     
+     
+      <a href="https://www.instagram.com/chicken_cuisine_" target="blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      
+      <a href="https://wa.me/2348147155706" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        Order via whatsapp
+      </a>
+  </div>
+
+
+      <p id="name">&copy;2022 All rights reserved by Richex_Coder</p>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        </div>
+      </div>
+  </body>
+</html>
